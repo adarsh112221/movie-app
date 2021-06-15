@@ -1,4 +1,4 @@
-function Movies(state=[],action)
+export default function Movies(state=[],action)
 {
     if(action.type==='ADD_MOVIES')
     {
