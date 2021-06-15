@@ -6,3 +6,11 @@
 //     type:'decrease counter',
 //     movies:[]
 // }
+export const ADD_MOVIES='ADD_MOVIES'
+export function addMovies(Movies)
+{
+return{
+    type:ADD_MOVIES,
+    Movies:Movies
+}
+}
