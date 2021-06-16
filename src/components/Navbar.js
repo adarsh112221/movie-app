@@ -7,7 +7,6 @@ class  Navbar extends React.Component {
             <input></input>
             <button id="search-btn">Search</button>
         </div>
-    
     </div>
   );
 }

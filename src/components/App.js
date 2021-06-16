@@ -17,6 +17,22 @@ class  App extends React.Component {
     store.dispatch(addMovies(data))
     console.log("store",store.getState());
   }
+  isFavourite=(movie)=>
+  {
+    const {favourites}=this.props.store.getState();
+    const index=favourites.indexOf(movie)
+    if(index!==-1)
+    {
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  onmovie()
+  {
+    return true;
+  }
   render()
   {
     console.log("render",this.props.store.getState())
@@ -27,10 +43,11 @@ class  App extends React.Component {
     <div className="main">
       <div className="tabs">
         <div className="tab">Movies</div>
-        <div className="tab">Favrouits</div>
+        <div className="tab" id="fav -tab" >Favourites</div>
       </div>
       <div className="list">
-{list.map((movie,index)=><MovieCard key={index} movie={movie}/>)}
+{list.map((movie,index)=><MovieCard  isfavourite={this.isFavourite(movie)} dispatch={this.props.store.dispatch} key={index} movie={movie}/>)}
+
       </div>
     </div>
     </div>
