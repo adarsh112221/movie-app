@@ -172,11 +172,14 @@ body {
 .favourite-btn {
   background-color: #2185d0;
   color: #fff;
+  border-radius: 10px;
   padding: 5px;}
 .unfavourite-btn {
   background-color: #db2828;
   color: #fff;
   text-shadow: none;
+  border-radius: 10px;
+  padding: 5px;
 }
 .no-movies {
   padding: 20px 0;

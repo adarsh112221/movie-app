@@ -3,7 +3,6 @@ import {data} from '../data';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
 import { addMovies, setShowFavourite } from '../actions';
-import { $CombinedState } from 'redux';
 class  App extends React.Component {
   componentDidMount()
   {
@@ -19,8 +18,8 @@ class  App extends React.Component {
     console.log("store",store.getState());
   }
   isFavourite=(movie)=>
-  {
-    const {favourites}=this.props.store.getState();
+  { const{movies}=this.props.store.getState();
+    const {favourites}=movies;
     const index=favourites.indexOf(movie)
     if(index!==-1)
     {
@@ -35,13 +34,13 @@ class  App extends React.Component {
 this.props.store.dispatch(setShowFavourite(val))
   }
 render()
-{
+{  const{movies,search}=this.props.store.getState();
     console.log("render",this.props.store.getState())
-  const {list,favourites,showFavourite}=this.props.store.getState();
+  const {list,favourites,showFavourite}=movies;
   const displayMovies=showFavourite? favourites:list
   return (
     <div className="App">
-    <Navbar/>
+    <Navbar search={search} dispatch={this.props.store.dispatch}/>
     <div className="main">
       <div className="tabs">
         <div className={`tab ${showFavourite?'': 'active-tabs' }`} onClick={()=>this.onChangeTab(false)}>Movies</div>
