@@ -5,7 +5,7 @@ import { ADD_MOVIE_TO_LIST,ADD_SEARCH_RESULT,ADD_MOVIES,ADD_TO_FAVOURITE,REMOVE_
      favourites:[],
      showFavourite:false
  }
-export  function movies(state=initialMovieState,action)
+ export function movies(state=initialMovieState,action)
 {
     switch(action.type)
     {
@@ -21,7 +21,7 @@ export  function movies(state=initialMovieState,action)
             }
             case REMOVE_FROM_FAVOURITE:
                 const filteredArray=state.favourites.filter(
-                    movie=>movie.Title!=action.movie.Title
+                    movie=>movie.Title!==action.movie.Title
                 );
                 return{
                     ...state,
@@ -46,7 +46,7 @@ export  function movies(state=initialMovieState,action)
         result:{},
          showSearchResults:false
     };
-    export function search(state=initialSearchState,action)
+    export  function search(state=initialSearchState,action)
     {switch(action.type)
         {  case ADD_SEARCH_RESULT:
             return{
@@ -64,10 +64,10 @@ export  function movies(state=initialMovieState,action)
         }
     }
     //lets create a main root reducer
-    const initialRootState={
-        Movies:initialMovieState,
-        search:initialSearchState
-    }
+    // const initialRootState={
+    //     movies:initialMovieState,
+    //     search:initialSearchState
+    // }
     // export default function rootReducer(state=initialRootState,action)
     // {
     //     return{

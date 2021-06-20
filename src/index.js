@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext } from 'react';
 import ReactDOM from 'react-dom';
 import { createStore,applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -39,10 +39,22 @@ const store=createStore(rootReducer,applyMiddleware(logger,thunk))
 //   Movies:[{name:'superman'}]
 // })
 // console.log('state',store.getState())
+export const storeContext=createContext()
+console.log('storeContext',storeContext)
+class Provider extends React.Component
+{
+render()
+{
+  const{store}=this.props
+  return (<storeContext.Provider value={store}>
+    {this.props.children}
+  </storeContext.Provider>)
+}
+}
 ReactDOM.render(
-  <React.StrictMode>
-    <App store={store} />
-  </React.StrictMode>,
+ <Provider store={store}>
+     <App />
+ </Provider>,
   document.getElementById('root')
 );
 
