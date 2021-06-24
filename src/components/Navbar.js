@@ -1,5 +1,5 @@
-import React from 'react'
-import { storeContext } from '../index';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {addMoviesToList,handleMovieSearch} from '../actions'
 class  Navbar extends React.Component {
   constructor(props)
@@ -43,15 +43,21 @@ render(){
   );
 }
 }
-class NavbarWrapper extends React.Component
-{
-  render()
-  {
-    return(
-      <storeContext.Consumer>
-        {(store)=><Navbar dispatch={store.dispatch} search={this.props.search}/>}
-      </storeContext.Consumer>
-    )
-  }
+// class NavbarWrapper extends React.Component
+// {
+//   render()
+//   {
+//     return(
+//       <storeContext.Consumer>
+//         {(store)=><Navbar dispatch={store.dispatch} search={this.props.search}/>}
+//       </storeContext.Consumer>
+//     )
+//   }
+// }
+function mapStateToProps({ search }) {
+  return {
+    search,
+  };
 }
-export default NavbarWrapper;
+
+export default connect(mapStateToProps)(Navbar);

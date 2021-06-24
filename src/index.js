@@ -1,10 +1,12 @@
-import React, {createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore,applyMiddleware } from 'redux';
+import {createStore,applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import './index.css';
 import App from './components/App';
 import rootReducer from './reducers'
+import { Provider } from 'react-redux';
+// import { connect } from 'react-redux';
 // const logger=function({dispatch,getState})
 // {
 //   return function(next)
@@ -39,21 +41,21 @@ const store=createStore(rootReducer,applyMiddleware(logger,thunk))
 //   Movies:[{name:'superman'}]
 // })
 // console.log('state',store.getState())
-export const storeContext=createContext()
-console.log('storeContext',storeContext)
-class Provider extends React.Component
-{
-render()
-{
-  const{store}=this.props
-  return (<storeContext.Provider value={store}>
-    {this.props.children}
-  </storeContext.Provider>)
-}
-}
+// export const storeContext=createContext()
+// console.log('storeContext',storeContext)
+// class Provider extends React.Component
+// {
+// render()
+// {console.log("yr props hai",this.props)
+//   const{store}=this.props
+//   return (<storeContext.Provider value={store}>
+//     {this.props.children}
+//   </storeContext.Provider>)
+// }
+// }
 ReactDOM.render(
  <Provider store={store}>
-     <App />
+     <App/>
  </Provider>,
   document.getElementById('root')
 );
