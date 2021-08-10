@@ -72,7 +72,7 @@ render()
 // }
 
 function callback(state) {
-  console.log(state.movies)
+  console.log('callback',state)
   return {
     movies: state.movies,
     search: state.search,
