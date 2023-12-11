@@ -37,15 +37,15 @@ this.props.dispatch(setShowFavourite(val))
 render()
 {  const{movies,search}=this.props;
     console.log("render",this.props)
-  const {list,favourites,showFavourite}=movies;
-  const displayMovies=showFavourite? favourites:list
+  const {list,favourites,showFavourites}=movies;
+  const displayMovies=showFavourites? favourites:list
   return (
     <div className="App">
     <Navbar search={search}/>
     <div className="main">
       <div className="tabs">
-        <div className={`tab ${showFavourite?'': 'active-tabs' }`} onClick={()=>this.onChangeTab(false)}>Movies</div>
-        <div className={`tab ${showFavourite?'active-tabs':'' }`} onClick={()=>this.onChangeTab(true)} >Favourites</div>
+        <div className={`tab ${showFavourites?'': 'active-tabs' }`} onClick={()=>this.onChangeTab(false)}>Movies</div>
+        <div className={`tab ${showFavourites?'active-tabs':'' }`} onClick={()=>this.onChangeTab(true)} >Favourites</div>
       </div>
       <div className="list">
       

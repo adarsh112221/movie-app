@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 import
     {
         ADD_MOVIES,
-        ADD_TO_FAVOURITES,
-        REMOVE_FROM_FAVOURITES,
-        SET_SHOW_FAVOURITES,
+        ADD_TO_FAVOURITE,
+        REMOVE_FROM_FAVOURITE,
+        SET_SHOW_FAVOURITE,
         ADD_SEARCH_RESULT,
         ADD_MOVIE_TO_LIST
     } from '../actions'
@@ -24,18 +24,18 @@ export function movies(state = initialMoviesState, action)
                 ...state,
                 list: action.movies
             }
-        case ADD_TO_FAVOURITES:
+        case ADD_TO_FAVOURITE:
             return {
                 ...state,
                 favourites: [action.movie, ...state.favourites]
             }
-        case REMOVE_FROM_FAVOURITES:
+        case REMOVE_FROM_FAVOURITE:
             const filtered_array = state.favourites.filter(movie => movie.Title !== action.movie.Title);
             return {
                 ...state,
                 favourites: filtered_array
             }
-        case SET_SHOW_FAVOURITES:
+        case SET_SHOW_FAVOURITE:
             return {
                 ...state,
                 showFavourites: action.val
