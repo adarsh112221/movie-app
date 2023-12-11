@@ -49,7 +49,7 @@ export function addMoviesToList(movie)
 }
 export function handleMovieSearch(movie){
 //now this should be responsable for getting the data from the url
-    const url=`http://www.omdbapi.com/?t=${movie}&apikey=3ca5df7`;
+    const url=`https://www.omdbapi.com/?t=${movie}&apikey=3ca5df7`;
     return function(dispatch)
     {
     fetch(url).then(response=>response.json()).then(movie=>{console.log('movie',movie);
